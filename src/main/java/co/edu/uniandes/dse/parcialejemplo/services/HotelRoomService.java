@@ -1,5 +1,7 @@
 package co.edu.uniandes.dse.parcialejemplo.services;
 
+import java.util.Optional;
+
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 
@@ -31,14 +33,16 @@ public class HotelRoomService {
 	 * @throws IllegalOperationException Si el numero de personas es menor al número de camas *2
 	 */
 	@Transactional
-	public RoomEntity createRoom(RoomEntity roomEntity) throws EntityNotFoundException, IllegalOperationException {
-		log.info("Inicia proceso de creación de la habitación");
-
-		if (roomEntity.getHostsNumber() >= (roomEntity.getBedsNumber()*2))
-			throw new IllegalOperationException("The number of hosts is not available by the name of beds");
-
-		log.info("Termina proceso de creación de la habitación");
-		return roomRepository.save(roomEntity);
+	public void addRoom(Long idHotel, Long idRoom) throws EntityNotFoundException, IllegalOperationException {
+		//log.info("Inicia proceso de adición de una habitación");
+		Optional<HotelEntity> hotelEntity = hotelRepository.findById(idHotel);
+		if (hotelEntity.isEmpty())
+			throw new EntityNotFoundException("Hotel not found");
+		Optional<RoomEntity> roomEntity = roomRepository.findById(idRoom);
+		if (hotelEntity.isEmpty())
+			throw new EntityNotFoundException("Room not found");
+		//log.info("Termina proceso de adición de una habitación");
+		hotelEntity.ifPresent(hotel -> hotel.getRooms().add(roomEntity.get()));
 	}
 
 }

@@ -93,8 +93,8 @@ public class HotelEntity extends BaseEntity {
 		return rooms;
 	}
 
-	public void setRooms(List<RoomEntity> rooms) {
-		this.rooms = rooms;
+	public void setRooms(RoomEntity roomEntity) {
+		this.rooms = (List<RoomEntity>) roomEntity;
 	}
 
 	

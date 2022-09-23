@@ -28,12 +28,12 @@ public class RoomService {
 	 */
 	@Transactional
 	public RoomEntity createRoom(RoomEntity roomEntity) throws EntityNotFoundException, IllegalOperationException {
-		log.info("Inicia proceso de creación de la habitación");
+		//log.info("Inicia proceso de creación de la habitación");
 
 		if (roomEntity.getHostsNumber() >= (roomEntity.getBedsNumber()*2))
 			throw new IllegalOperationException("The number of hosts is not available by the name of beds");
 
-		log.info("Termina proceso de creación de la habitación");
+		//log.info("Termina proceso de creación de la habitación");
 		return roomRepository.save(roomEntity);
 	}
 

@@ -27,12 +27,12 @@ public class HotelService {
 	 */
 	@Transactional
 	public HotelEntity createHotel(HotelEntity hotelEntity) throws EntityNotFoundException, IllegalOperationException {
-		log.info("Inicia proceso de creación del hotel");
+		//log.info("Inicia proceso de creación del hotel");
 
 		if (!hotelRepository.findByName(hotelEntity.getName()).isEmpty())
 			throw new IllegalOperationException("Name already exists");
 
-		log.info("Termina proceso de creación del hotel");
+		//log.info("Termina proceso de creación del hotel");
 		return hotelRepository.save(hotelEntity);
 	}
 
