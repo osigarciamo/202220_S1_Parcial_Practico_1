@@ -29,13 +29,10 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+
 import javax.persistence.OneToMany;
 
-import lombok.Data;
+
 import lombok.Getter;
 import lombok.Setter;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -59,4 +56,46 @@ public class HotelEntity extends BaseEntity {
 	@PodamExclude
 	@OneToMany(mappedBy = "hotel", cascade = CascadeType.PERSIST, orphanRemoval = true)
 	private List <RoomEntity> rooms = new ArrayList<>();
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAdress() {
+		return adress;
+	}
+
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+
+	public int getStarsNumber() {
+		return starsNumber;
+	}
+
+	public void setStarsNumber(int starsNumber) {
+		this.starsNumber = starsNumber;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public List<RoomEntity> getRooms() {
+		return rooms;
+	}
+
+	public void setRooms(List<RoomEntity> rooms) {
+		this.rooms = rooms;
+	}
+
+	
 }

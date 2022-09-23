@@ -25,13 +25,9 @@ SOFTWARE.
 package co.edu.uniandes.dse.parcialejemplo.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
 
-import lombok.Data;
+import javax.persistence.ManyToOne;
+
 import lombok.Getter;
 import lombok.Setter;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -56,4 +52,54 @@ public class RoomEntity extends BaseEntity {
 	@PodamExclude
 	@ManyToOne
 	private HotelEntity hotel;
+
+	public int getIdNumber() {
+		return idNumber;
+	}
+
+	public void setIdNumber(int idNumber) {
+		this.idNumber = idNumber;
+	}
+
+	public int getHostsNumber() {
+		return hostsNumber;
+	}
+
+	public void setHostsNumber(int hostsNumber) {
+		this.hostsNumber = hostsNumber;
+	}
+
+	public int getBedsNumber() {
+		return bedsNumber;
+	}
+
+	public void setBedsNumber(int bedsNumber) {
+		this.bedsNumber = bedsNumber;
+	}
+
+	public int getBathsNumber() {
+		return bathsNumber;
+	}
+
+	public void setBathsNumber(int bathsNumber) {
+		this.bathsNumber = bathsNumber;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public HotelEntity getHotel() {
+		return hotel;
+	}
+
+	public void setHotel(HotelEntity hotel) {
+		this.hotel = hotel;
+	}
+	
+	
 }
