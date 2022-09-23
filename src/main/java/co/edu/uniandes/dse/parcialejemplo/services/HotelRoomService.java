@@ -9,12 +9,16 @@ import org.springframework.stereotype.Service;
 import co.edu.uniandes.dse.parcialejemplo.entities.HotelEntity;
 import co.edu.uniandes.dse.parcialejemplo.entities.RoomEntity;
 import co.edu.uniandes.dse.parcialejemplo.exceptions.IllegalOperationException;
+import co.edu.uniandes.dse.parcialejemplo.repositories.HotelRepository;
 import co.edu.uniandes.dse.parcialejemplo.repositories.RoomRepository;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-public class RoomService {
+public class HotelRoomService {
+	
+	@Autowired
+	HotelRepository hotelRepository;
 	
 	@Autowired
 	RoomRepository roomRepository;
