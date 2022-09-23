@@ -33,7 +33,7 @@ public class HotelRoomService {
 	 * @throws IllegalOperationException Si el numero de personas es menor al número de camas *2
 	 */
 	@Transactional
-	public void addRoom(Long idHotel, Long idRoom) throws EntityNotFoundException, IllegalOperationException {
+	public HotelEntity addRoom(Long idHotel, Long idRoom) throws EntityNotFoundException, IllegalOperationException {
 		//log.info("Inicia proceso de adición de una habitación");
 		Optional<HotelEntity> hotelEntity = hotelRepository.findById(idHotel);
 		if (hotelEntity.isEmpty())
@@ -43,6 +43,7 @@ public class HotelRoomService {
 			throw new EntityNotFoundException("Room not found");
 		//log.info("Termina proceso de adición de una habitación");
 		hotelEntity.ifPresent(hotel -> hotel.getRooms().add(roomEntity.get()));
+		return hotelEntity.get();
 	}
 
 }
